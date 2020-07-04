@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <main class="container mt-3">
+    <h1 class="display-5 mt-4">Летим из <b>{{ departure[2:] }}</b></h1>
+    {% set prices = tours.values() | map(attribute="price") | list  %}
+    {% set nights = tours.values() | map(attribute="nights") | list  %}
+    <p class="mb-4"><b>Найдено {{tours | length}} тура</b>, от {{ prices | min | as_currency }}
+      до {{prices | max | as_currency }} и
+      от {{ nights | min }} ночей до {{ nights| max}} ночей</p>
+    <!-- CARDS -->
+    <div class="row mt-5">
+      {% for tour_id,tour_data in tours.items() %}
+        <div class="col-4">
+          {% include 'tour_card.html' %}
+        </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}

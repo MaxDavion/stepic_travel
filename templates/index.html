@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <main class="container mt-3">
+    <!-- HERO -->
+    <section class="jumbotron text-center mt-4">
+      <h1 class="display-4">Всякие туры</h1>
+      <p class="lead">{{ subtitle }}</p>
+      <p class="mt-5 w-50 mx-auto">{{ description }} </p>
+    </section>
+    <!-- CARDS -->
+    <div class="row mt-5">
+      {% for tour_id,tour_data in tours.items() %}
+      <div class="col-4">
+        {% include 'tour_card.html' %}
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}
