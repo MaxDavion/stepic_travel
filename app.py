@@ -60,4 +60,5 @@ def as_stars(count_stars):
     return int(count_stars) * '★'
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()
