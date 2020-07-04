@@ -1,6 +1,7 @@
+import random
 from flask import Flask, render_template
 import data
-import random
+
 
 app = Flask(__name__)
 
@@ -30,14 +31,14 @@ def departures(departure):
     )
 
 
-@app.route('/tours/<id>/')
+@app.route('/tours/<int:id>/')
 def tours(id):
     return render_template(
         "tour.html",
         departures=data.departures,
         title=data.title,
         tour_id=id,
-        tour=data.tours.get(int(id))
+        tour=data.tours.get(id)
     )
 
 
